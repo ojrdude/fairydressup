@@ -33,3 +33,7 @@ _ReSharper*/
 [Tt]est[Rr]esult*
 !gruntfile.js
 /node_modules
+
+#Ignore Eclipse Files
+.project
+.settings/*
