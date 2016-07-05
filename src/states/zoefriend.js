@@ -105,7 +105,7 @@ ZoeFriend.createCustomButtons = function() {
 
 	//Apply input events to the next and previous buttons
 	this.nextButton.input.onUp.add(function() {
-		this.game.states.switchState('Zoe');
+		this.game.states.switchState('Fairy');
 	}, this);
 
 
