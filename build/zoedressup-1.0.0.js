@@ -689,25 +689,26 @@ var Fairy = new Play('Fairy');
 Fairy.preload = function() {
 
 	//Fairy Graphics
-	this.addImage('face', 'assets/img/character/Fairy/face.png', false);
+	// Currently excluding the fairy outlines at end of spritesheets by specifying the number of images
+	this.addSpriteSheet('girl_base', 'assets/img/character/fairy/girl_fairy_base.png', 350, 500, false, 9);
+	this.addSpriteSheet('girl_access', 'assets/img/character/fairy/girls_access.png', 350, 500, false, 10);
+	this.addSpriteSheet('girl_clothes_bottom', 'assets/img/character/fairy/girls_bottom_clothes.png', 350, 500, false, 30);
+	this.addSpriteSheet('girl_ears', 'assets/img/character/fairy/girls_ears.png', 350, 500, false, 6);
+	this.addSpriteSheet('girl_eyes', 'assets/img/character/fairy/girls_eyes.png', 350, 500, false, 45);
+	this.addSpriteSheet('girl_hair', 'assets/img/character/fairy/girls_hair.png', 350, 500, false, 50);
+	this.addSpriteSheet('girl_head_access', 'assets/img/character/fairy/girls_head_access.png', 350, 500, false, 8);
+	this.addSpriteSheet('girl_mouths', 'assets/img/character/fairy/girls_mouths.png', 350, 500, false, 8);
+	this.addSpriteSheet('girl_shoes', 'assets/img/character/fairy/girls_shoes.png', 350, 500, false, 30);
+	this.addSpriteSheet('girl_clothes_top', 'assets/img/character/fairy/girls_top_clothes.png', 350, 500, false, 30);
+	this.addSpriteSheet('girl_wands', 'assets/img/character/fairy/girls_wands.png', 350, 500, false, 15);
+	this.addSpriteSheet('wings', 'assets/img/character/fairy/wings.png', 400, 400, false, 30);
 
-	this.addSpriteSheet('eyebrows', 'assets/img/character/Fairy/eyebrows.png', 477, 283, false, 6);
-	this.addSpriteSheet('eyes', 'assets/img/character/Fairy/eyes.png', 481, 304, false, 10);
-	this.addSpriteSheet('glasses', 'assets/img/character/Fairy/glasses.png', 510, 320, false);
-	this.addSpriteSheet('hair', 'assets/img/character/Fairy/hair.png', 600, 377, false, 3);
-	this.addSpriteSheet('mouth', 'assets/img/character/Fairy/mouth.png', 75, 52, false);
-	this.addSpriteSheet('nose', 'assets/img/character/Fairy/nose.png', 431, 351, false);
+	// Base for loading time
+	this.addImage('base', 'assets/img/character/fairy/girl_base_single.png', false);
 
-	//The Body
-	this.addImage('base', 'assets/img/character/Fairy/outfit/base.png', false);
-	this.addImage('outfit-1', 'assets/img/character/Fairy/outfit/0.png', false);
-	this.addImage('outfit-2', 'assets/img/character/Fairy/outfit/1.png', false);
-	this.addImage('outfit-3', 'assets/img/character/Fairy/outfit/2.png', false);
-	this.addImage('outfit-4', 'assets/img/character/Fairy/outfit/3.png', false);
-	this.addImage('outfit-5', 'assets/img/character/Fairy/outfit/4.png', false);
 	
 	//Create the background
-	this.background = new Kiwi.GameObjects.StaticImage(this, this.textures['Fairy-bg']);
+	this.background = new Kiwi.GameObjects.StaticImage(this, this.textures['fairy-bg']);
 	this.addChild(this.background);
 
 	//Called after we have loaded our assets	
@@ -730,48 +731,51 @@ Fairy.loadComplete = function() {
 Fairy.createDressup = function() {
 
     //Create the background. 
-    this.background = new Kiwi.GameObjects.StaticImage(this, this.textures['Fairy-bg'], 0, 0);
+    this.background = new Kiwi.GameObjects.StaticImage(this, this.textures['fairy-bg'], 0, 0);
 
 
     //We are going to store all of the dress up parts inside this array, to keep track of them.
     this.dressUpElements = [];
     this.buttons = [];
 
+    var baseX = 200;
+    var baseY = 170
     //The Base
-    var base = new Kiwi.GameObjects.StaticImage(this, this.textures.base, 0, 0);
+    var base = new Kiwi.GameObjects.StaticImage(this, this.textures.base, baseX, baseY);
 
     //Changable Items
-    var face = new Option(this, this.textures.face, 0, 0);
-    var eyes = new Option(this, this.textures.eyes, 0, 0);
-    var eyebrows = new Option(this, this.textures.eyebrows, 0, 0);
-    var glasses = new Option(this, this.textures.glasses, 0, 0);
-    var hair = new Option(this, this.textures.hair, 1, 0);
-    var mouth = new Option(this, this.textures.mouth, 383, 335);
-    var nose = new Option(this, this.textures.nose, 0, 0);
-    var outfit = new Option(this, [this.textures['outfit-1'], 
-    	this.textures['outfit-2'],
-    	this.textures['outfit-3'],
-    	this.textures['outfit-4'],
-    	this.textures['outfit-5']
-    	], 0, 0);
-
+    var bases = new Option(this, this.textures.girl_base, baseX, baseY);
+    var accessories = new Option(this, this.textures.girl_access, 0, 0);
+    var clothesBottom = new Option(this, this.textures.girls_clothes_bottom, 0, 0);
+    var ears = new Option(this, this.textures.girl_ears, 0, 0);
+    var eyes = new Option(this, this.textures.girl_eyes, 0, 0);
+    var hair = new Option(this, this.textures.girl_hair, 0, 0);
+    var headAccessories = new Option(this, this.textures.girl_head_access, 0, 0);
+    var mouths = new Option(this, this.textures.girl_mouths, 0, 0);
+    var shoes = new Option(this, this.textures.girl_shoes, 0, 0);
+    var clothesTop = new Option(this, this.textures.girl_clothes_top, 0, 0);
+    var wands = new Option(this, this.textures.girls_wands, 0, 0);
+    var wings = new Option(this, this.textures.wings, 0, 0);
+    
     //Add the dress up elements to the array
-    this.dressUpElements = [outfit, face, eyes, eyebrows, hair, nose, mouth, glasses];
+    this.dressUpElements = [bases, accessories, clothesBottom, ears, eyes, hair, headAccessories, mouths,
+                            shoes, clothesTop, wands, wings];
 
     //Create the buttons
-    this.createButton( this.textures.hairBtn, 10, hair);
-    this.createButton( this.textures.eyebrowsBtn, 121, eyebrows);
-    this.createButton( this.textures.glassesBtn, 232, glasses);
-    this.createButton( this.textures.eyesBtn, 343, eyes);
-    this.createButton( this.textures.noseBtn, 454, nose);
-    this.createButton( this.textures.mouthBtn, 565, mouth);
-    this.createButton( this.textures.outfitBtn, 676, outfit);
+    this.createButton( this.textures.hairBtn, 10, bases);
+    this.createButton( this.textures.eyebrowsBtn, 121, accessories);
+    this.createButton( this.textures.glassesBtn, 232, clothesBottom);
+    this.createButton( this.textures.eyesBtn, 343, ears);
+    this.createButton( this.textures.noseBtn, 454, hair);
+    this.createButton( this.textures.mouthBtn, 565, headAccessories);
+    this.createButton( this.textures.outfitBtn, 676, mouths);
+    // TODO: other dresssup elements
 
 
     //Add to the stage.
     this.addChild(this.background);
     this.addChild(base);
-    this.addChild(face);
+//    this.addChild(face);
 
     for(var i = 0; i < this.dressUpElements.length; i++) {
     	this.addChild( this.dressUpElements[i] );
@@ -875,6 +879,7 @@ MainLoader.preload = function () {
     this.addImage('zoefriend-bg', 'assets/img/character/zoefriend/bg.png');
     this.addImage('dude-bg', 'assets/img/character/dude/bg.png');
     this.addImage('dog-bg', 'assets/img/character/dog/bg.png');
+    this.addImage('fairy-bg', 'assets/img/character/fairy/bg.png')
 
     //Load in the 'spinner' assets, which are displayed whilst loading is happening on the Play State.
     this.addImage('spinnerBackground', 'assets/img/spinner/spinnerSquare.png');

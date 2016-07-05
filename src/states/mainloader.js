@@ -62,6 +62,7 @@ MainLoader.preload = function () {
     this.addImage('zoefriend-bg', 'assets/img/character/zoefriend/bg.png');
     this.addImage('dude-bg', 'assets/img/character/dude/bg.png');
     this.addImage('dog-bg', 'assets/img/character/dog/bg.png');
+    this.addImage('fairy-bg', 'assets/img/character/fairy/bg.png')
 
     //Load in the 'spinner' assets, which are displayed whilst loading is happening on the Play State.
     this.addImage('spinnerBackground', 'assets/img/spinner/spinnerSquare.png');
