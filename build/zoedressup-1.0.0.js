@@ -690,7 +690,7 @@ Fairy.preload = function() {
 
 	//Fairy Graphics
 	// Currently excluding the fairy outlines at end of spritesheets by specifying the number of images
-	this.addSpriteSheet('girl_base', 'assets/img/character/fairy/girl_fairy_base.png', 350, 500, false, 9);
+	this.addSpriteSheet('girl_body', 'assets/img/character/fairy/girl_fairy_base.png', 350, 500, false, 9);
 	this.addSpriteSheet('girl_access', 'assets/img/character/fairy/girls_access.png', 350, 500, false, 10);
 	this.addSpriteSheet('girl_clothes_bottom', 'assets/img/character/fairy/girls_bottom_clothes.png', 350, 500, false, 30);
 	this.addSpriteSheet('girl_ears', 'assets/img/character/fairy/girls_ears.png', 350, 500, false, 6);
@@ -702,10 +702,6 @@ Fairy.preload = function() {
 	this.addSpriteSheet('girl_clothes_top', 'assets/img/character/fairy/girls_top_clothes.png', 350, 500, false, 30);
 	this.addSpriteSheet('girl_wands', 'assets/img/character/fairy/girls_wands.png', 350, 500, false, 15);
 	this.addSpriteSheet('wings', 'assets/img/character/fairy/wings.png', 400, 400, false, 30);
-
-	// Base for loading time
-	this.addImage('base', 'assets/img/character/fairy/girl_base_single.png', false);
-
 	
 	//Create the background
 	this.background = new Kiwi.GameObjects.StaticImage(this, this.textures['fairy-bg']);
@@ -740,26 +736,24 @@ Fairy.createDressup = function() {
 
     var baseX = 200;
     var baseY = 170
-    //The Base
-    var base = new Kiwi.GameObjects.StaticImage(this, this.textures.base, baseX, baseY);
-
+    
     //Changable Items
-    var bases = new Option(this, this.textures.girl_base, baseX, baseY);
-    var accessories = new Option(this, this.textures.girl_access, 0, 0);
-    var clothesBottom = new Option(this, this.textures.girls_clothes_bottom, 0, 0);
-    var ears = new Option(this, this.textures.girl_ears, 0, 0);
-    var eyes = new Option(this, this.textures.girl_eyes, 0, 0);
-    var hair = new Option(this, this.textures.girl_hair, 0, 0);
-    var headAccessories = new Option(this, this.textures.girl_head_access, 0, 0);
-    var mouths = new Option(this, this.textures.girl_mouths, 0, 0);
-    var shoes = new Option(this, this.textures.girl_shoes, 0, 0);
-    var clothesTop = new Option(this, this.textures.girl_clothes_top, 0, 0);
-    var wands = new Option(this, this.textures.girls_wands, 0, 0);
-    var wings = new Option(this, this.textures.wings, 0, 0);
+    var wings = new Option(this, this.textures.wings, baseX, baseY);
+    var bases = new Option(this, this.textures.girl_body, baseX, baseY);
+    var accessories = new Option(this, this.textures.girl_access, baseX, baseY);
+    var clothesBottom = new Option(this, this.textures.girls_clothes_bottom, baseX, baseY);
+    var ears = new Option(this, this.textures.girl_ears, baseX, baseY);
+    var eyes = new Option(this, this.textures.girl_eyes, baseX, baseY);
+    var hair = new Option(this, this.textures.girl_hair, baseX, baseY);
+    var headAccessories = new Option(this, this.textures.girl_head_access, baseX, baseY);
+    var mouths = new Option(this, this.textures.girl_mouths, baseX, baseY);
+    var shoes = new Option(this, this.textures.girl_shoes, baseX, baseY);
+    var clothesTop = new Option(this, this.textures.girl_clothes_top, baseX, baseY);
+    var wands = new Option(this, this.textures.girls_wands, baseX, baseY);
     
     //Add the dress up elements to the array
-    this.dressUpElements = [bases, accessories, clothesBottom, ears, eyes, hair, headAccessories, mouths,
-                            shoes, clothesTop, wands, wings];
+    this.dressUpElements = [ wings, bases, accessories, clothesBottom, ears, eyes, hair, headAccessories, mouths,
+                            shoes, clothesTop, wands];
 
     //Create the buttons
     this.createButton( this.textures.hairBtn, 10, bases);
@@ -774,8 +768,6 @@ Fairy.createDressup = function() {
 
     //Add to the stage.
     this.addChild(this.background);
-    this.addChild(base);
-//    this.addChild(face);
 
     for(var i = 0; i < this.dressUpElements.length; i++) {
     	this.addChild( this.dressUpElements[i] );
