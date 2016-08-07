@@ -66,17 +66,32 @@ Fairy.createDressup = function() {
     var wands = new Option(this, this.textures.girls_wands, baseX, baseY);
     
     //Add the dress up elements to the array
-    this.dressUpElements = [ wings, bases, accessories, clothesBottom, ears, eyes, hair, headAccessories, mouths,
-                            shoes, clothesTop, wands];
+    this.dressUpElements = [ 
+                             wings, 
+                             bases, 
+                             accessories, 
+                             clothesBottom, 
+                             ears,
+                            
+                             
+//                             eyes,
+//                             hair,
+                             
+                             headAccessories,
+                             mouths,
+                            shoes,
+                            clothesTop,
+                            wands
+                            ];
 
     //Create the buttons
-    this.createButton( this.textures.hairBtn, 10, bases);
-    this.createButton( this.textures.eyebrowsBtn, 121, accessories);
-    this.createButton( this.textures.glassesBtn, 232, clothesBottom);
-    this.createButton( this.textures.eyesBtn, 343, ears);
-    this.createButton( this.textures.noseBtn, 454, hair);
-    this.createButton( this.textures.mouthBtn, 565, headAccessories);
-    this.createButton( this.textures.outfitBtn, 676, mouths);
+//    this.createButton( this.textures.hairBtn, 10, bases);
+//    this.createButton( this.textures.eyebrowsBtn, 121, accessories);
+//    this.createButton( this.textures.glassesBtn, 232, clothesBottom);
+//    this.createButton( this.textures.eyesBtn, 343, ears);
+//    this.createButton( this.textures.noseBtn, 454, hair);
+//    this.createButton( this.textures.mouthBtn, 565, headAccessories);
+//    this.createButton( this.textures.outfitBtn, 676, mouths);
     // TODO: other dresssup elements
 
 
