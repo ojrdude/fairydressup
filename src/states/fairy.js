@@ -8,8 +8,8 @@ Fairy.preload = function() {
 	this.addSpriteSheet('girl_access', 'assets/img/character/fairy/girls_access.png', 350, 500, false, 10);
 	this.addSpriteSheet('girl_clothes_bottom', 'assets/img/character/fairy/girls_bottom_clothes.png', 350, 500, false, 30);
 	this.addSpriteSheet('girl_ears', 'assets/img/character/fairy/girls_ears.png', 350, 500, false, 6);
-	this.addSpriteSheet('girl_eyes', 'assets/img/character/fairy/girls_eyes_less.png', 350, 500, false, 45);
-	this.addSpriteSheet('girl_hair', 'assets/img/character/fairy/girls_hair_less.png', 350, 500, false, 50);
+	this.addSpriteSheet('girl_eyes', 'assets/img/character/fairy/girls_eyes_less.png', 350, 500, false, 5);
+	this.addSpriteSheet('girl_hair', 'assets/img/character/fairy/girls_hair_less.png', 350, 500, false, 5);
 	this.addSpriteSheet('girl_head_access', 'assets/img/character/fairy/girls_head_access.png', 350, 500, false, 8);
 	this.addSpriteSheet('girl_mouths', 'assets/img/character/fairy/girls_mouths.png', 350, 500, false, 8);
 	this.addSpriteSheet('girl_shoes', 'assets/img/character/fairy/girls_shoes.png', 350, 500, false, 30);
@@ -69,26 +69,32 @@ Fairy.createDressup = function() {
     this.dressUpElements = [ 
                              wings, 
                              bases, 
-                             clothesTop,
-                             shoes,
+                             clothesTop, 
+                             shoes, 
                              clothesBottom, 
-                             mouths,
-                             eyes,
+                             mouths, 
+                             eyes, 
                              hair,    
-                             ears,
-                             headAccessories,
-                             accessories, 
+                             ears, 
+                             headAccessories, 
+                             accessories,  
                             wands
                             ];
 
     //Create the buttons
-    this.createButton( this.textures.hairBtn, 10, bases);
+    this.createButton( this.textures.hairBtn, 10, hair);
     this.createButton( this.textures.eyebrowsBtn, 121, accessories);
-    this.createButton( this.textures.glassesBtn, 232, clothesBottom);
-    this.createButton( this.textures.eyesBtn, 343, ears);
-    this.createButton( this.textures.noseBtn, 454, hair);
-    this.createButton( this.textures.mouthBtn, 565, headAccessories);
-    this.createButton( this.textures.outfitBtn, 676, mouths);
+    this.createButton( this.textures.glassesBtn, 232, headAccessories);
+    this.createButton( this.textures.eyesBtn, 343, eyes);
+    this.createButton( this.textures.noseBtn, 454, bases);
+    this.createButton( this.textures.mouthBtn, 565, mouths);
+    this.createButton( this.textures.outfitBtn, 676, clothesTop);
+    this.createButton( this.textures.outfitBtn, 787, clothesBottom);
+    this.createRHSButton(this.textures.outfitBtn, 10, wings);
+    this.createRHSButton(this.textures.outfitBtn, 121, shoes);
+    this.createRHSButton(this.textures.noseBtn, 232, wands);
+    this.createRHSButton( this.textures.hairBtn, 343, ears);
+
     // TODO: other dresssup elements
 
 
@@ -112,6 +118,13 @@ Fairy.createButton = function(btnTexture, y, dressUpItem) {
 	ele.input.onUp.add(dressUpItem.next, dressUpItem);
 }
 
+Fairy.createRHSButton = function(btnTexture, y, dressUpItem) {
+	var margin = 10;
+	var buttonWidth = 100;
+	var ele = new Kiwi.GameObjects.Sprite(this, btnTexture, 768 - margin - buttonWidth, y);
+	this.buttons.push(ele);
+	ele.input.onUp.add(dressUpItem.next, dressUpItem);
+}
 
 //This custom 
 Fairy.createCustomButtons = function() {
