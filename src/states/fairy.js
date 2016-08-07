@@ -8,8 +8,8 @@ Fairy.preload = function() {
 	this.addSpriteSheet('girl_access', 'assets/img/character/fairy/girls_access.png', 350, 500, false, 10);
 	this.addSpriteSheet('girl_clothes_bottom', 'assets/img/character/fairy/girls_bottom_clothes.png', 350, 500, false, 30);
 	this.addSpriteSheet('girl_ears', 'assets/img/character/fairy/girls_ears.png', 350, 500, false, 6);
-	this.addSpriteSheet('girl_eyes', 'assets/img/character/fairy/girls_eyes.png', 350, 500, false, 45);
-	this.addSpriteSheet('girl_hair', 'assets/img/character/fairy/girls_hair.png', 350, 500, false, 50);
+	this.addSpriteSheet('girl_eyes', 'assets/img/character/fairy/girls_eyes_less.png', 350, 500, false, 45);
+	this.addSpriteSheet('girl_hair', 'assets/img/character/fairy/girls_hair_less.png', 350, 500, false, 50);
 	this.addSpriteSheet('girl_head_access', 'assets/img/character/fairy/girls_head_access.png', 350, 500, false, 8);
 	this.addSpriteSheet('girl_mouths', 'assets/img/character/fairy/girls_mouths.png', 350, 500, false, 8);
 	this.addSpriteSheet('girl_shoes', 'assets/img/character/fairy/girls_shoes.png', 350, 500, false, 30);
@@ -55,7 +55,7 @@ Fairy.createDressup = function() {
     var wings = new Option(this, this.textures.wings, baseX, baseY);
     var bases = new Option(this, this.textures.girl_body, baseX, baseY);
     var accessories = new Option(this, this.textures.girl_access, baseX, baseY);
-    var clothesBottom = new Option(this, this.textures.girls_clothes_bottom, baseX, baseY);
+    var clothesBottom = new Option(this, this.textures.girl_clothes_bottom, baseX, baseY);
     var ears = new Option(this, this.textures.girl_ears, baseX, baseY);
     var eyes = new Option(this, this.textures.girl_eyes, baseX, baseY);
     var hair = new Option(this, this.textures.girl_hair, baseX, baseY);
@@ -63,35 +63,32 @@ Fairy.createDressup = function() {
     var mouths = new Option(this, this.textures.girl_mouths, baseX, baseY);
     var shoes = new Option(this, this.textures.girl_shoes, baseX, baseY);
     var clothesTop = new Option(this, this.textures.girl_clothes_top, baseX, baseY);
-    var wands = new Option(this, this.textures.girls_wands, baseX, baseY);
+    var wands = new Option(this, this.textures.girl_wands, baseX, baseY);
     
     //Add the dress up elements to the array
     this.dressUpElements = [ 
                              wings, 
                              bases, 
-                             accessories, 
+                             clothesTop,
+                             shoes,
                              clothesBottom, 
-                             ears,
-                            
-                             
-//                             eyes,
-//                             hair,
-                             
-                             headAccessories,
                              mouths,
-                            shoes,
-                            clothesTop,
+                             eyes,
+                             hair,    
+                             ears,
+                             headAccessories,
+                             accessories, 
                             wands
                             ];
 
     //Create the buttons
-//    this.createButton( this.textures.hairBtn, 10, bases);
-//    this.createButton( this.textures.eyebrowsBtn, 121, accessories);
-//    this.createButton( this.textures.glassesBtn, 232, clothesBottom);
-//    this.createButton( this.textures.eyesBtn, 343, ears);
-//    this.createButton( this.textures.noseBtn, 454, hair);
-//    this.createButton( this.textures.mouthBtn, 565, headAccessories);
-//    this.createButton( this.textures.outfitBtn, 676, mouths);
+    this.createButton( this.textures.hairBtn, 10, bases);
+    this.createButton( this.textures.eyebrowsBtn, 121, accessories);
+    this.createButton( this.textures.glassesBtn, 232, clothesBottom);
+    this.createButton( this.textures.eyesBtn, 343, ears);
+    this.createButton( this.textures.noseBtn, 454, hair);
+    this.createButton( this.textures.mouthBtn, 565, headAccessories);
+    this.createButton( this.textures.outfitBtn, 676, mouths);
     // TODO: other dresssup elements
 
 
